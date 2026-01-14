@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Ireland - Irish College Degrees & Career Paths</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --emerald: #1b4d3e;
+            --gold: #d4af37;
+            --light-bg: #f8f6f1;
+            --dark-text: #1a1a1a;
+            --text-secondary: #555;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--emerald);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--emerald) 0%, #0f3a2e 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://user-gen-media-assets.s3.amazonaws.com/seedream_images/f3cda184-5b1e-43ad-b6dc-638b29f46bef.png') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--emerald);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Courses Section */
+        .courses-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--emerald);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            display: block;
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 4px solid var(--gold);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, var(--emerald) 0%, #0f3a2e 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .course-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-card h3 {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .course-body {
+            padding: 2rem;
+        }
+
+        .course-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .course-info {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .course-info strong {
+            color: var(--emerald);
+        }
+
+        .career-paths {
+            margin-top: 1rem;
+        }
+
+        .career-paths h4 {
+            color: var(--emerald);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .career-list {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .career-list li {
+            color: var(--text-secondary);
+            margin: 0.3rem 0;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .career-list li::before {
+            content: '→';
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Outcomes Section */
+        .outcomes-section {
+            background: var(--emerald);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .outcomes-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .outcome-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s;
+        }
+
+        .outcome-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateX(10px);
+        }
+
+        .outcome-item h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--emerald) 0%, #0f3a2e 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--emerald);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-column h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column a {
+            color: #c0c0c0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stats {
+                margin-top: -2rem;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">🇮🇪 Study Ireland</div>
+        <ul>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#outcomes">Outcomes</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Irish Education Awaits</h1>
+            <p>Explore world-class degree programs from Theology to Medicine, Engineering to Creative Design</p>
+            <button class="cta-button">Explore Courses →</button>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">93%</div>
+            <div class="stat-label">Graduate Employment Rate</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">Top 1%</div>
+            <div class="stat-label">Global University Rankings</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">€50k+</div>
+            <div class="stat-label">Average Starting Salary</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">7 Universities</div>
+            <div class="stat-label">Russell Group Members</div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section" id="courses">
+        <h2 class="section-title">Degree Programs Available</h2>
+        
+        <div class="courses-grid">
+            <!-- Theology & Religion -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">📖</div>
+                    <h3>Theology & Religion</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study philosophy, religious texts, and ethical theory in a rich academic tradition.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Religious Leader</li>
+                        <li>Academic Researcher</li>
+                        <li>Counselor</li>
+                        <li>Non-profit Director</li>
+                        <li>Publishing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Medicine -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">⚕️</div>
+                    <h3>Medicine</h3>
+                </div>
+                <div class="course-body">
+                    <p>Train at Ireland's leading medical schools with access to excellent clinical facilities.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 5-6 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Entry:</strong> High competition
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>General Practitioner</li>
+                        <li>Surgeon</li>
+                        <li>Medical Researcher</li>
+                        <li>Hospital Consultant</li>
+                        <li>€100k+ salary potential</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Engineering -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">⚙️</div>
+                    <h3>Engineering</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study mechanical, electrical, civil, software, and chemical engineering with world-class facilities.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Focus:</strong> Practical + Theory
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Software Developer</li>
+                        <li>Infrastructure Engineer</li>
+                        <li>Product Designer</li>
+                        <li>Energy Sector</li>
+                        <li>€60k-80k starting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Law -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">⚖️</div>
+                    <h3>Law</h3>
+                </div>
+                <div class="course-body">
+                    <p>Master Irish, EU, and international law in prestigious law schools with strong bar passage rates.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Bar Pass:</strong> 95%+
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Solicitor</li>
+                        <li>Barrister</li>
+                        <li>Corporate Lawyer</li>
+                        <li>Judge</li>
+                        <li>€70k-100k+ career</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Arts & Humanities -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">📚</div>
+                    <h3>Arts & Humanities</h3>
+                </div>
+                <div class="course-body">
+                    <p>Explore literature, history, languages, philosophy, and cultural studies in depth.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Specializations:</strong> Many
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Writer/Editor</li>
+                        <li>Teacher</li>
+                        <li>Journalist</li>
+                        <li>Historian</li>
+                        <li>Heritage Manager</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Creative Design -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">🎨</div>
+                    <h3>Creative Design</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study graphic design, fashion, industrial design, and digital media with hands-on training.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Portfolio:</strong> Required
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Graphic Designer</li>
+                        <li>UX/UI Designer</li>
+                        <li>Fashion Designer</li>
+                        <li>Creative Director</li>
+                        <li>€45k-70k starting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">💼</div>
+                    <h3>Business</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study accounting, finance, marketing, management, and entrepreneurship at leading business schools.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master/MBA<br>
+                        <strong>Accreditation:</strong> AACSB, EQUIS
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Management Consultant</li>
+                        <li>Investment Banker</li>
+                        <li>Entrepreneur</li>
+                        <li>Finance Director</li>
+                        <li>€55k-90k starting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Psychology -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">🧠</div>
+                    <h3>Psychology</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study human behavior, cognitive science, neuroscience, and clinical psychology with modern labs.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Practical:</strong> Clinical placements
+                    </div>
+                    <ul class="career-paths">
+                        <li><strong>Career Paths</strong></li>
+                        <li>Clinical Psychologist</li>
+                        <li>Researcher</li>
+                        <li>Counselor</li>
+                        <li>HR Specialist</li>
+                        <li>€45k-70k starting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="outcomes-section" id="outcomes">
+        <h2 class="section-title" style="color: var(--gold);">What You'll Achieve</h2>
+        
+        <div class="outcomes-grid">
+            <div class="outcome-item">
+                <h3>🌍 Global Recognition</h3>
+                <p>Irish degrees are recognized worldwide, opening doors to international careers and further study.</p>
+            </div>
+
+            <div class="outcome-item">
+                <h3>💡 Critical Thinking</h3>
+                <p>Develop advanced problem-solving and analytical skills valued by employers across all industries.</p>
+            </div>
+
+            <div class="outcome-item">
+                <h3>🤝 Professional Network</h3>
+                <p>Build lifelong connections with classmates, professors, and industry leaders in your field.</p>
+            </div>
+
+            <div class="outcome-item">
+                <h3>📈 Career Growth</h3>
+                <p>Access to exclusive internships, placements, and recruiting from top companies.</p>
+            </div>
+
+            <div class="outcome-item">
+                <h3>🔬 Research Access</h3>
+                <p>Participate in cutting-edge research projects with world-leading academics.</p>
+            </div>
+
+            <div class="outcome-item">
+                <h3>💰 Earning Potential</h3>
+                <p>graduates earn €50k-100k+ depending on field, with strong career progression paths.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to Transform Your Future?</h2>
+        <p>Start your journey in Ireland's world-class education system. Explore courses, visit campuses, and apply today.</p>
+        <button class="cta-button">Get Started Now →</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>🇮🇪 Study Ireland</h4>
+                <p>Your gateway to world-class Irish education.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Universities</h4>
+                <ul>
+                    <li><a href="#">Trinity College Dublin</a></li>
+                    <li><a href="#">University College Dublin</a></li>
+                    <li><a href="#">University of Cork</a></li>
+                    <li><a href="#">Dublin City University</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">College Guides</a></li>
+                    <li><a href="#">Application Help</a></li>
+                    <li><a href="#">Career Info</a></li>
+                    <li><a href="#">Scholarship Finder</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@studyireland.ie">Email Us</a></li>
+                    <li><a href="#">Chat Support</a></li>
+                    <li><a href="#">Follow on Social</a></li>
+                    <li><a href="#">Call Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Study Ireland. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+</body>
+</html>
