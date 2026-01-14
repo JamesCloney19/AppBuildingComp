@@ -21,7 +21,7 @@
         }
 
         body {
-            font-family: 'Serif', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
             color: var(--dark-text);
             background-color: var(--light-bg);
@@ -46,6 +46,7 @@
             font-weight: bold;
             color: var(--gold);
             letter-spacing: 2px;
+            font-family: 'Georgia', serif;
         }
 
         nav ul {
@@ -58,6 +59,7 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s;
+            font-family: 'Georgia', serif;
         }
 
         nav a:hover {
@@ -99,12 +101,14 @@
             margin-bottom: 1rem;
             color: var(--gold);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Georgia', serif;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             color: #e0e0e0;
+            font-family: 'Georgia', serif;
         }
 
         .cta-button {
@@ -118,6 +122,7 @@
             font-weight: bold;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            font-family: 'Georgia', serif;
         }
 
         .cta-button:hover {
@@ -160,12 +165,14 @@
             font-size: 2.5rem;
             color: var(--gold);
             font-weight: bold;
+            font-family: 'Georgia', serif;
         }
 
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-top: 0.5rem;
+            font-family: 'Georgia', serif;
         }
 
         /* Courses Section */
@@ -181,6 +188,7 @@
             color: var(--emerald);
             margin-bottom: 3rem;
             position: relative;
+            font-family: 'Georgia', serif;
         }
 
         .section-title::after {
@@ -228,6 +236,7 @@
         .course-card h3 {
             margin: 0.5rem 0;
             font-size: 1.5rem;
+            font-family: 'Georgia', serif;
         }
 
         .course-body {
@@ -238,6 +247,7 @@
             color: var(--text-secondary);
             margin-bottom: 1rem;
             font-size: 0.95rem;
+            font-family: 'Georgia', serif;
         }
 
         .course-info {
@@ -246,39 +256,54 @@
             border-radius: 5px;
             margin: 1rem 0;
             font-size: 0.9rem;
+            font-family: 'Georgia', serif;
         }
 
         .course-info strong {
             color: var(--emerald);
+            font-family: 'Georgia', serif;
         }
 
-        .career-paths {
+        .course-graph {
             margin-top: 1rem;
+            text-align: center;
         }
 
-        .career-paths h4 {
+        .course-graph h4 {
             color: var(--emerald);
             margin-bottom: 0.5rem;
             font-size: 0.95rem;
+            font-family: 'Georgia', serif;
         }
 
-        .career-list {
-            list-style: none;
-            font-size: 0.85rem;
-        }
-
-        .career-list li {
+        .graph-placeholder {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
             color: var(--text-secondary);
-            margin: 0.3rem 0;
-            padding-left: 1rem;
-            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px dashed var(--gold);
+            font-family: 'Georgia', serif;
         }
 
-        .career-list li::before {
-            content: '→';
+        .graph-placeholder:hover {
+            background: linear-gradient(135deg, #e8e8e8 0%, #e0e0e0 100%);
+            border-color: var(--emerald);
+        }
+
+        .graph-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--emerald);
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Georgia', serif;
+        }
+
+        .graph-link:hover {
             color: var(--gold);
-            position: absolute;
-            left: 0;
         }
 
         /* Outcomes Section */
@@ -313,6 +338,11 @@
             color: var(--gold);
             margin-bottom: 1rem;
             font-size: 1.3rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .outcome-item p {
+            font-family: 'Georgia', serif;
         }
 
         /* CTA Section */
@@ -327,6 +357,7 @@
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--gold);
+            font-family: 'Georgia', serif;
         }
 
         .cta-section p {
@@ -335,6 +366,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            font-family: 'Georgia', serif;
         }
 
         /* Footer */
@@ -359,6 +391,7 @@
         .footer-column h4 {
             color: var(--gold);
             margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
         }
 
         .footer-column ul {
@@ -369,16 +402,22 @@
             color: #c0c0c0;
             text-decoration: none;
             transition: color 0.3s;
+            font-family: 'Georgia', serif;
         }
 
         .footer-column a:hover {
             color: var(--gold);
         }
 
+        .footer-column p {
+            font-family: 'Georgia', serif;
+        }
+
         .footer-bottom {
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             padding-top: 2rem;
             text-align: center;
+            font-family: 'Georgia', serif;
         }
 
         /* Responsive */
@@ -452,26 +491,31 @@
         <h2 class="section-title">Degree Programs Available</h2>
         
         <div class="courses-grid">
-            <!-- Theology & Religion -->
+            <!-- Engineering -->
             <div class="course-card">
                 <div class="course-header">
-                    <div class="course-icon">📖</div>
-                    <h3>Theology & Religion</h3>
+                    <div class="course-icon">⚙️</div>
+                    <h3>Engineering</h3>
                 </div>
                 <div class="course-body">
-                    <p>Study philosophy, religious texts, and ethical theory in a rich academic tradition.</p>
+                    <p>Study mechanical, electrical, civil, software, and chemical engineering with world-class facilities.</p>
                     <div class="course-info">
-                        <strong>Duration:</strong> 3-4 years<br>
-                        <strong>Level:</strong> Bachelor/Master
+                        <strong>Duration:</strong> 4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Focus:</strong> Practical + Theory
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Religious Leader</li>
-                        <li>Academic Researcher</li>
-                        <li>Counselor</li>
-                        <li>Non-profit Director</li>
-                        <li>Publishing</li>
-                    </ul>
+                    <div class="course-graph">
+                        <h4>💰 Salary Growth by Specialization</h4>
+                        <div class="graph-placeholder">
+                            📊 Engineering Salaries<br>
+                            Software: €45k-€130k<br>
+                            Mechanical: €42k-€120k<br>
+                            Civil: €40k-€115k<br>
+                            Electrical: €43k-€125k<br>
+                            Chemical: €44k-€128k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
                 </div>
             </div>
 
@@ -488,38 +532,18 @@
                         <strong>Level:</strong> Bachelor/Master<br>
                         <strong>Entry:</strong> High competition
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>General Practitioner</li>
-                        <li>Surgeon</li>
-                        <li>Medical Researcher</li>
-                        <li>Hospital Consultant</li>
-                        <li>€100k+ salary potential</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Engineering -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">⚙️</div>
-                    <h3>Engineering</h3>
-                </div>
-                <div class="course-body">
-                    <p>Study mechanical, electrical, civil, software, and chemical engineering with world-class facilities.</p>
-                    <div class="course-info">
-                        <strong>Duration:</strong> 4 years<br>
-                        <strong>Level:</strong> Bachelor/Master<br>
-                        <strong>Focus:</strong> Practical + Theory
+                    <div class="course-graph">
+                        <h4>💰 Salary Growth by Specialization</h4>
+                        <div class="graph-placeholder">
+                            📊 Medical Salaries<br>
+                            GP: €35k-€140k<br>
+                            Surgeon: €40k-€180k<br>
+                            Consultant: €38k-€175k<br>
+                            Radiologist: €39k-€177k<br>
+                            Psychiatrist: €37k-€172k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Software Developer</li>
-                        <li>Infrastructure Engineer</li>
-                        <li>Product Designer</li>
-                        <li>Energy Sector</li>
-                        <li>€60k-80k starting</li>
-                    </ul>
                 </div>
             </div>
 
@@ -536,62 +560,17 @@
                         <strong>Level:</strong> Bachelor/Master<br>
                         <strong>Bar Pass:</strong> 95%+
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Solicitor</li>
-                        <li>Barrister</li>
-                        <li>Corporate Lawyer</li>
-                        <li>Judge</li>
-                        <li>€70k-100k+ career</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Arts & Humanities -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">📚</div>
-                    <h3>Arts & Humanities</h3>
-                </div>
-                <div class="course-body">
-                    <p>Explore literature, history, languages, philosophy, and cultural studies in depth.</p>
-                    <div class="course-info">
-                        <strong>Duration:</strong> 3-4 years<br>
-                        <strong>Level:</strong> Bachelor/Master<br>
-                        <strong>Specializations:</strong> Many
+                    <div class="course-graph">
+                        <h4>💰 Career Salary Range</h4>
+                        <div class="graph-placeholder">
+                            📊 Legal Salaries<br>
+                            Entry: €35k<br>
+                            5 years: €70k<br>
+                            10 years: €100k<br>
+                            15+ years: €130k-€145k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Writer/Editor</li>
-                        <li>Teacher</li>
-                        <li>Journalist</li>
-                        <li>Historian</li>
-                        <li>Heritage Manager</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Creative Design -->
-            <div class="course-card">
-                <div class="course-header">
-                    <div class="course-icon">🎨</div>
-                    <h3>Creative Design</h3>
-                </div>
-                <div class="course-body">
-                    <p>Study graphic design, fashion, industrial design, and digital media with hands-on training.</p>
-                    <div class="course-info">
-                        <strong>Duration:</strong> 3-4 years<br>
-                        <strong>Level:</strong> Bachelor/Master<br>
-                        <strong>Portfolio:</strong> Required
-                    </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Graphic Designer</li>
-                        <li>UX/UI Designer</li>
-                        <li>Fashion Designer</li>
-                        <li>Creative Director</li>
-                        <li>€45k-70k starting</li>
-                    </ul>
                 </div>
             </div>
 
@@ -608,14 +587,98 @@
                         <strong>Level:</strong> Bachelor/Master/MBA<br>
                         <strong>Accreditation:</strong> AACSB, EQUIS
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Management Consultant</li>
-                        <li>Investment Banker</li>
-                        <li>Entrepreneur</li>
-                        <li>Finance Director</li>
-                        <li>€55k-90k starting</li>
-                    </ul>
+                    <div class="course-graph">
+                        <h4>💰 Career Salary Range</h4>
+                        <div class="graph-placeholder">
+                            📊 Business Salaries<br>
+                            Entry: €32k<br>
+                            5 years: €62k<br>
+                            10 years: €85k<br>
+                            15+ years: €110k-€135k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teaching -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">📚</div>
+                    <h3>Teaching & Education</h3>
+                </div>
+                <div class="course-body">
+                    <p>Prepare for a rewarding career educating the next generation in Irish schools and universities.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Impact:</strong> High social value
+                    </div>
+                    <div class="course-graph">
+                        <h4>💰 Salary Growth by Role</h4>
+                        <div class="graph-placeholder">
+                            📊 Teaching Salaries<br>
+                            Primary Teacher: €28k-€65k<br>
+                            Secondary Teacher: €30k-€68k<br>
+                            Principal: €35k-€74k<br>
+                            University Lecturer: €38k-€82k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General Disciplines -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">🎓</div>
+                    <h3>Humanities & Creative</h3>
+                </div>
+                <div class="course-body">
+                    <p>Explore arts, literature, design, psychology, and research in diverse creative fields.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Specializations:</strong> Many
+                    </div>
+                    <div class="course-graph">
+                        <h4>💰 Salary Growth by Field</h4>
+                        <div class="graph-placeholder">
+                            📊 Creative Salaries<br>
+                            Journalist: €24k-€88k<br>
+                            Designer: €26k-€98k<br>
+                            Psychologist: €28k-€105k<br>
+                            Academic: €32k-€110k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theology & Religion -->
+            <div class="course-card">
+                <div class="course-header">
+                    <div class="course-icon">📖</div>
+                    <h3>Theology & Religion</h3>
+                </div>
+                <div class="course-body">
+                    <p>Study philosophy, religious texts, and ethical theory in a rich academic tradition.</p>
+                    <div class="course-info">
+                        <strong>Duration:</strong> 3-4 years<br>
+                        <strong>Level:</strong> Bachelor/Master<br>
+                        <strong>Career Paths:</strong> Diverse
+                    </div>
+                    <div class="course-graph">
+                        <h4>💰 Career Opportunities</h4>
+                        <div class="graph-placeholder">
+                            📊 Theology Salaries<br>
+                            Religious Leader: €30k-€55k<br>
+                            Counselor: €32k-€65k<br>
+                            Researcher: €35k-€70k<br>
+                            Non-profit Director: €40k-€75k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
                 </div>
             </div>
 
@@ -632,14 +695,17 @@
                         <strong>Level:</strong> Bachelor/Master<br>
                         <strong>Practical:</strong> Clinical placements
                     </div>
-                    <ul class="career-paths">
-                        <li><strong>Career Paths</strong></li>
-                        <li>Clinical Psychologist</li>
-                        <li>Researcher</li>
-                        <li>Counselor</li>
-                        <li>HR Specialist</li>
-                        <li>€45k-70k starting</li>
-                    </ul>
+                    <div class="course-graph">
+                        <h4>💰 Career Salary Range</h4>
+                        <div class="graph-placeholder">
+                            📊 Psychology Salaries<br>
+                            Entry: €28k<br>
+                            5 years: €52k<br>
+                            10 years: €68k<br>
+                            15+ years: €85k-€105k
+                        </div>
+                        <a href="#" class="graph-link">View Interactive Graph →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -677,7 +743,7 @@
 
             <div class="outcome-item">
                 <h3>💰 Earning Potential</h3>
-                <p>graduates earn €50k-100k+ depending on field, with strong career progression paths.</p>
+                <p>Graduates earn €50k-100k+ depending on field, with strong career progression paths.</p>
             </div>
         </div>
     </section>
@@ -734,3 +800,4 @@
     </footer>
 </body>
 </html>
+
