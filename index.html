@@ -835,13 +835,10 @@
                 <p><strong>Entry Level: €40k-€45k → Experienced (20 yrs): €115k-€130k</strong></p>
                 <p class="graph-info">Software Engineers command the highest starting salaries and have the steepest growth curve, reaching €130k by year 20. Chemical Engineers also show strong progression to €128k. All engineering disciplines show consistent upward salary progression with strong career growth potential.</p>
                 <svg viewBox="0 0 1000 500" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" id="engineeringChart">
-                    <!-- Defs for tooltip -->
                     <defs>
                         <style>
                             .chart-line { cursor: pointer; }
-                            .chart-line:hover { filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
-                            .tooltip { display: none; }
-                            .tooltip.show { display: block; }
+                            .chart-line:hover { stroke-width: 6; filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
                         </style>
                     </defs>
                     
@@ -870,7 +867,7 @@
                     <text x="65" y="65" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€160k</text>
                     
                     <!-- Software Engineers (€45k-€130k) -->
-                    <polyline class="chart-line" points="80,385 296,330 512,238 728,170 944,68" stroke="#2563eb" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Software Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <polyline class="chart-line" points="80,385 296,330 512,238 728,170 944,68" stroke="#2563eb" stroke-width="4" fill="none" onmouseover="showEnggTooltip(evt, 'Software Engineer')" onmouseout="hideEnggTooltip(evt)"/>
                     <circle cx="80" cy="385" r="5" fill="#2563eb" class="chart-point"/>
                     <circle cx="296" cy="330" r="5" fill="#2563eb" class="chart-point"/>
                     <circle cx="512" cy="238" r="5" fill="#2563eb" class="chart-point"/>
@@ -878,7 +875,7 @@
                     <circle cx="944" cy="68" r="5" fill="#2563eb" class="chart-point"/>
                     
                     <!-- Chemical Engineers (€44k-€128k) -->
-                    <polyline class="chart-line" points="80,387 296,337 512,253 728,190 944,80" stroke="#f59e0b" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Chemical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <polyline class="chart-line" points="80,387 296,337 512,253 728,190 944,80" stroke="#f59e0b" stroke-width="4" fill="none" onmouseover="showEnggTooltip(evt, 'Chemical Engineer')" onmouseout="hideEnggTooltip(evt)"/>
                     <circle cx="80" cy="387" r="5" fill="#f59e0b" class="chart-point"/>
                     <circle cx="296" cy="337" r="5" fill="#f59e0b" class="chart-point"/>
                     <circle cx="512" cy="253" r="5" fill="#f59e0b" class="chart-point"/>
@@ -886,7 +883,7 @@
                     <circle cx="944" cy="80" r="5" fill="#f59e0b" class="chart-point"/>
                     
                     <!-- Electrical Engineers (€43k-€125k) -->
-                    <polyline class="chart-line" points="80,388 296,340 512,261 728,203 944,95" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Electrical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <polyline class="chart-line" points="80,388 296,340 512,261 728,203 944,95" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showEnggTooltip(evt, 'Electrical Engineer')" onmouseout="hideEnggTooltip(evt)"/>
                     <circle cx="80" cy="388" r="5" fill="#8b5cf6" class="chart-point"/>
                     <circle cx="296" cy="340" r="5" fill="#8b5cf6" class="chart-point"/>
                     <circle cx="512" cy="261" r="5" fill="#8b5cf6" class="chart-point"/>
@@ -894,7 +891,7 @@
                     <circle cx="944" cy="95" r="5" fill="#8b5cf6" class="chart-point"/>
                     
                     <!-- Mechanical Engineers (€42k-€120k) -->
-                    <polyline class="chart-line" points="80,390 296,344 512,270 728,218 944,110" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Mechanical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <polyline class="chart-line" points="80,390 296,344 512,270 728,218 944,110" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showEnggTooltip(evt, 'Mechanical Engineer')" onmouseout="hideEnggTooltip(evt)"/>
                     <circle cx="80" cy="390" r="5" fill="#06b6d4" class="chart-point"/>
                     <circle cx="296" cy="344" r="5" fill="#06b6d4" class="chart-point"/>
                     <circle cx="512" cy="270" r="5" fill="#06b6d4" class="chart-point"/>
@@ -902,7 +899,7 @@
                     <circle cx="944" cy="110" r="5" fill="#06b6d4" class="chart-point"/>
                     
                     <!-- Civil Engineers (€40k-€115k) -->
-                    <polyline class="chart-line" points="80,395 296,352 512,280 728,230 944,125" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Civil Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <polyline class="chart-line" points="80,395 296,352 512,280 728,230 944,125" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showEnggTooltip(evt, 'Civil Engineer')" onmouseout="hideEnggTooltip(evt)"/>
                     <circle cx="80" cy="395" r="5" fill="#10b981" class="chart-point"/>
                     <circle cx="296" cy="352" r="5" fill="#10b981" class="chart-point"/>
                     <circle cx="512" cy="280" r="5" fill="#10b981" class="chart-point"/>
@@ -933,23 +930,37 @@
                     <text x="515" y="485" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Years of Experience</text>
                     
                     <!-- Tooltip -->
-                    <rect id="tooltip" x="0" y="0" width="150" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5" class="tooltip"/>
-                    <text id="tooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white"/>
+                    <g id="enggTooltip" style="display: none; pointer-events: none;">
+                        <rect id="enggTooltipBg" x="-75" y="-20" width="150" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5"/>
+                        <text id="enggTooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white" text-anchor="middle"/>
+                    </g>
                 </svg>
                 
-                <script>
-                function showTooltip(evt, text) {
-                    const tooltip = document.getElementById('tooltip');
-                    const tooltipText = document.getElementById('tooltipText');
+                <script type="text/javascript">
+                window.showEnggTooltip = function(evt, text) {
+                    const svg = document.getElementById('engineeringChart');
+                    if (!svg) return;
+                    const tooltip = document.getElementById('enggTooltip');
+                    const tooltipText = document.getElementById('enggTooltipText');
+                    const tooltipBg = document.getElementById('enggTooltipBg');
+                    
                     tooltipText.textContent = text;
-                    tooltip.setAttribute('x', evt.clientX - 75);
-                    tooltip.setAttribute('y', evt.clientY - 60);
-                    tooltip.classList.add('show');
-                }
-                function hideTooltip(evt) {
-                    const tooltip = document.getElementById('tooltip');
-                    tooltip.classList.remove('show');
-                }
+                    const textLength = text.length * 7;
+                    const width = Math.max(150, textLength + 20);
+                    tooltipBg.setAttribute('width', width);
+                    tooltipBg.setAttribute('x', -width / 2);
+                    
+                    const svgRect = svg.getBoundingClientRect();
+                    const mouseX = evt.clientX - svgRect.left;
+                    const mouseY = evt.clientY - svgRect.top;
+                    
+                    tooltip.setAttribute('transform', `translate(${mouseX}, ${mouseY - 40})`);
+                    tooltip.style.display = 'block';
+                };
+                window.hideEnggTooltip = function(evt) {
+                    const tooltip = document.getElementById('enggTooltip');
+                    if (tooltip) tooltip.style.display = 'none';
+                };
                 </script>
                 <p class="graph-source"><strong>Data Source:</strong> Irish Engineering Salary Survey 2024<br><strong>Note:</strong> Salaries based on Dublin/major cities. Regional variations apply.</p>
             </div>
@@ -967,8 +978,8 @@
                 <svg viewBox="0 0 1200 500" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" id="medicineChart">
                     <defs>
                         <style>
-                            .chart-line { cursor: pointer; }
-                            .chart-line:hover { filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
+                            .med-chart-line { cursor: pointer; }
+                            .med-chart-line:hover { stroke-width: 6; filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
                         </style>
                     </defs>
                     
@@ -992,23 +1003,23 @@
                     <text x="65" y="95" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€180k</text>
                     
                     <!-- Surgeon (€40k-€180k) -->
-                    <polyline class="chart-line" points="80,395 300,350 520,260 740,145 960,70 1150,50" stroke="#ef4444" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Surgeon')" onmouseout="hideMedTooltip(evt)"/>
+                    <polyline class="med-chart-line" points="80,395 300,350 520,260 740,145 960,70 1150,50" stroke="#ef4444" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Surgeon')" onmouseout="hideMedTooltip(evt)"/>
                     <circle cx="80" cy="395" r="5" fill="#ef4444"/><circle cx="300" cy="350" r="5" fill="#ef4444"/><circle cx="520" cy="260" r="5" fill="#ef4444"/><circle cx="740" cy="145" r="5" fill="#ef4444"/><circle cx="960" cy="70" r="5" fill="#ef4444"/><circle cx="1150" cy="50" r="5" fill="#ef4444"/>
                     
                     <!-- Radiologist (€39k-€177k) -->
-                    <polyline class="chart-line" points="80,396 300,352 520,265 740,152 960,77 1150,55" stroke="#f97316" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Radiologist')" onmouseout="hideMedTooltip(evt)"/>
+                    <polyline class="med-chart-line" points="80,396 300,352 520,265 740,152 960,77 1150,55" stroke="#f97316" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Radiologist')" onmouseout="hideMedTooltip(evt)"/>
                     <circle cx="80" cy="396" r="5" fill="#f97316"/><circle cx="300" cy="352" r="5" fill="#f97316"/><circle cx="520" cy="265" r="5" fill="#f97316"/><circle cx="740" cy="152" r="5" fill="#f97316"/><circle cx="960" cy="77" r="5" fill="#f97316"/><circle cx="1150" cy="55" r="5" fill="#f97316"/>
                     
                     <!-- Psychiatrist (€37k-€172k) -->
-                    <polyline class="chart-line" points="80,397 300,355 520,273 740,162 960,87 1150,65" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Psychiatrist')" onmouseout="hideMedTooltip(evt)"/>
+                    <polyline class="med-chart-line" points="80,397 300,355 520,273 740,162 960,87 1150,65" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Psychiatrist')" onmouseout="hideMedTooltip(evt)"/>
                     <circle cx="80" cy="397" r="5" fill="#8b5cf6"/><circle cx="300" cy="355" r="5" fill="#8b5cf6"/><circle cx="520" cy="273" r="5" fill="#8b5cf6"/><circle cx="740" cy="162" r="5" fill="#8b5cf6"/><circle cx="960" cy="87" r="5" fill="#8b5cf6"/><circle cx="1150" cy="65" r="5" fill="#8b5cf6"/>
                     
                     <!-- Consultant (€38k-€175k) -->
-                    <polyline class="chart-line" points="80,396 300,353 520,268 740,158 960,80 1150,58" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Consultant')" onmouseout="hideMedTooltip(evt)"/>
+                    <polyline class="med-chart-line" points="80,396 300,353 520,268 740,158 960,80 1150,58" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Consultant')" onmouseout="hideMedTooltip(evt)"/>
                     <circle cx="80" cy="396" r="5" fill="#06b6d4"/><circle cx="300" cy="353" r="5" fill="#06b6d4"/><circle cx="520" cy="268" r="5" fill="#06b6d4"/><circle cx="740" cy="158" r="5" fill="#06b6d4"/><circle cx="960" cy="80" r="5" fill="#06b6d4"/><circle cx="1150" cy="58" r="5" fill="#06b6d4"/>
                     
                     <!-- GP (€35k-€140k) -->
-                    <polyline class="chart-line" points="80,398 300,365 520,305 740,220 960,130 1150,100" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'General Practitioner (GP)')" onmouseout="hideMedTooltip(evt)"/>
+                    <polyline class="med-chart-line" points="80,398 300,365 520,305 740,220 960,130 1150,100" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'General Practitioner (GP)')" onmouseout="hideMedTooltip(evt)"/>
                     <circle cx="80" cy="398" r="5" fill="#10b981"/><circle cx="300" cy="365" r="5" fill="#10b981"/><circle cx="520" cy="305" r="5" fill="#10b981"/><circle cx="740" cy="220" r="5" fill="#10b981"/><circle cx="960" cy="130" r="5" fill="#10b981"/><circle cx="1150" cy="100" r="5" fill="#10b981"/>
                     
                     <!-- Legend -->
@@ -1022,17 +1033,31 @@
                     <text x="20" y="235" font-size="13" font-weight="bold" text-anchor="middle" fill="#333" transform="rotate(-90 20 235)">Salary (€)</text>
                     <text x="615" y="485" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Years of Experience</text>
                     
-                    <rect id="medTooltip" x="0" y="0" width="200" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5" style="display: none;"/>
-                    <text id="medTooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white"/>
+                    <!-- Tooltip -->
+                    <g id="medTooltip" style="display: none; pointer-events: none;">
+                        <rect id="medTooltipBg" x="-100" y="-20" width="200" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5"/>
+                        <text id="medTooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white" text-anchor="middle"/>
+                    </g>
                 </svg>
                 
                 <script>
                 function showMedTooltip(evt, text) {
+                    const svg = document.getElementById('medicineChart');
                     const tooltip = document.getElementById('medTooltip');
                     const tooltipText = document.getElementById('medTooltipText');
+                    const tooltipBg = document.getElementById('medTooltipBg');
+                    
                     tooltipText.textContent = text;
-                    tooltip.setAttribute('x', evt.clientX - 100);
-                    tooltip.setAttribute('y', evt.clientY - 60);
+                    const textLength = text.length * 7;
+                    const width = Math.max(200, textLength + 20);
+                    tooltipBg.setAttribute('width', width);
+                    tooltipBg.setAttribute('x', -width / 2);
+                    
+                    const svgRect = svg.getBoundingClientRect();
+                    const mouseX = evt.clientX - svgRect.left;
+                    const mouseY = evt.clientY - svgRect.top;
+                    
+                    tooltip.setAttribute('transform', `translate(${mouseX}, ${mouseY - 40})`);
                     tooltip.style.display = 'block';
                 }
                 function hideMedTooltip(evt) {
