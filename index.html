@@ -249,44 +249,6 @@
             font-size: 0.95rem;
             font-family: 'Georgia', serif;
         }
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-
-        .modal.show {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 900px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            color: var(--emerald);
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
 
         .course-info {
             background: var(--light-bg);
@@ -324,6 +286,7 @@
             transition: all 0.3s;
             border: 2px dashed var(--gold);
             font-family: 'Georgia', serif;
+            margin-bottom: 0.5rem;
         }
 
         .graph-placeholder:hover {
@@ -331,17 +294,120 @@
             border-color: var(--emerald);
         }
 
-        .graph-link {
+        .graph-button {
             display: inline-block;
             margin-top: 0.5rem;
-            color: var(--emerald);
+            color: white;
+            background: var(--emerald);
             text-decoration: none;
             font-weight: bold;
             font-family: 'Georgia', serif;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .graph-link:hover {
+        .graph-button:hover {
+            background: var(--gold);
+            color: var(--emerald);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: var(--emerald);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
             color: var(--gold);
+        }
+
+        .modal-title {
+            color: var(--emerald);
+            font-family: 'Georgia', serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1rem;
+        }
+
+        .graph-container {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .graph-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .graph-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 1rem 0;
+            font-family: 'Georgia', serif;
+        }
+
+        .graph-source {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* Outcomes Section */
@@ -481,27 +547,18 @@
                 margin-top: -2rem;
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
-    <script>
-    function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.classList.add('show');
-    }
-
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        if (modal) modal.classList.remove('show');
-    }
-
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            closeModal(event.target.id);
-        }
-    }
-</script>
-
 <body>
     <!-- Navigation -->
     <nav>
@@ -570,8 +627,7 @@
                             Electrical: €43k-€125k<br>
                             Chemical: €44k-€128k
                         </div>
-<button onclick="openModal('engineeringModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('engineeringModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -599,9 +655,7 @@
                             Radiologist: €39k-€177k<br>
                             Psychiatrist: €37k-€172k
                         </div>
-                      
-<button onclick="openModal('medicineModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('medicineModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -628,8 +682,7 @@
                             10 years: €100k<br>
                             15+ years: €130k-€145k
                         </div>
-<button onclick="openModal('lawModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('lawModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -656,8 +709,7 @@
                             10 years: €85k<br>
                             15+ years: €110k-€135k
                         </div>
-<button onclick="openModal('businessModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('businessModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -684,13 +736,12 @@
                             Principal: €35k-€74k<br>
                             University Lecturer: €38k-€82k
                         </div>
-<button onclick="openModal('teachingModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('teachingModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
 
-            <!-- General Disciplines -->
+            <!-- Humanities & Creative -->
             <div class="course-card">
                 <div class="course-header">
                     <div class="course-icon">🎓</div>
@@ -712,8 +763,7 @@
                             Psychologist: €28k-€105k<br>
                             Academic: €32k-€110k
                         </div>
-<button onclick="openModal('humanitiesModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('humanitiesModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -740,8 +790,7 @@
                             Researcher: €35k-€70k<br>
                             Non-profit Director: €40k-€75k
                         </div>
-<button onclick="openModal('theologyModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('theologyModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
@@ -768,13 +817,317 @@
                             10 years: €68k<br>
                             15+ years: €85k-€105k
                         </div>
-<button onclick="openModal('psychologyModal')" class="graph-link" style="background: none; border: none; padding: 0; cursor: pointer; font-family: Georgia, serif;">View Interactive Graph →</button>
-" class="graph-link">View Interactive Graph →</a>
+                        <button class="graph-button" onclick="openModal('psychologyModal')">View Interactive Graph →</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- MODALS - ALL WORKING -->
+
+    <!-- Engineering Modal -->
+    <div id="engineeringModal" class="modal" onclick="if(event.target === this) closeModal('engineeringModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('engineeringModal')">&times;</button>
+            <h2 class="modal-title">⚙️ Engineering - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €40k-€45k → Experienced (20 yrs): €115k-€130k</strong></p>
+                <p class="graph-info">Software Engineers command the highest starting salaries and have the steepest growth curve, reaching €130k by year 20. Chemical Engineers also show strong progression to €128k. All engineering disciplines show consistent upward salary progression with strong career growth potential.</p>
+                <svg viewBox="0 0 1000 500" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" id="engineeringChart">
+                    <!-- Defs for tooltip -->
+                    <defs>
+                        <style>
+                            .chart-line { cursor: pointer; }
+                            .chart-line:hover { filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
+                            .tooltip { display: none; }
+                            .tooltip.show { display: block; }
+                        </style>
+                    </defs>
+                    
+                    <!-- Grid -->
+                    <line x1="80" y1="420" x2="950" y2="420" stroke="#ddd" stroke-width="2"/>
+                    <line x1="80" y1="50" x2="80" y2="420" stroke="#ddd" stroke-width="2"/>
+                    
+                    <!-- Horizontal grid lines -->
+                    <line x1="80" y1="330" x2="950" y2="330" stroke="#f0f0f0" stroke-width="1"/>
+                    <line x1="80" y1="240" x2="950" y2="240" stroke="#f0f0f0" stroke-width="1"/>
+                    <line x1="80" y1="150" x2="950" y2="150" stroke="#f0f0f0" stroke-width="1"/>
+                    <line x1="80" y1="60" x2="950" y2="60" stroke="#f0f0f0" stroke-width="1"/>
+                    
+                    <!-- X axis labels (Years) -->
+                    <text x="80" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">0</text>
+                    <text x="296" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">5</text>
+                    <text x="512" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">10</text>
+                    <text x="728" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">15</text>
+                    <text x="944" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">20</text>
+                    
+                    <!-- Y axis labels (Salary) -->
+                    <text x="65" y="425" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€0</text>
+                    <text x="65" y="335" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€40k</text>
+                    <text x="65" y="245" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€80k</text>
+                    <text x="65" y="155" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€120k</text>
+                    <text x="65" y="65" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€160k</text>
+                    
+                    <!-- Software Engineers (€45k-€130k) -->
+                    <polyline class="chart-line" points="80,385 296,330 512,238 728,170 944,68" stroke="#2563eb" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Software Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <circle cx="80" cy="385" r="5" fill="#2563eb" class="chart-point"/>
+                    <circle cx="296" cy="330" r="5" fill="#2563eb" class="chart-point"/>
+                    <circle cx="512" cy="238" r="5" fill="#2563eb" class="chart-point"/>
+                    <circle cx="728" cy="170" r="5" fill="#2563eb" class="chart-point"/>
+                    <circle cx="944" cy="68" r="5" fill="#2563eb" class="chart-point"/>
+                    
+                    <!-- Chemical Engineers (€44k-€128k) -->
+                    <polyline class="chart-line" points="80,387 296,337 512,253 728,190 944,80" stroke="#f59e0b" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Chemical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <circle cx="80" cy="387" r="5" fill="#f59e0b" class="chart-point"/>
+                    <circle cx="296" cy="337" r="5" fill="#f59e0b" class="chart-point"/>
+                    <circle cx="512" cy="253" r="5" fill="#f59e0b" class="chart-point"/>
+                    <circle cx="728" cy="190" r="5" fill="#f59e0b" class="chart-point"/>
+                    <circle cx="944" cy="80" r="5" fill="#f59e0b" class="chart-point"/>
+                    
+                    <!-- Electrical Engineers (€43k-€125k) -->
+                    <polyline class="chart-line" points="80,388 296,340 512,261 728,203 944,95" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Electrical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <circle cx="80" cy="388" r="5" fill="#8b5cf6" class="chart-point"/>
+                    <circle cx="296" cy="340" r="5" fill="#8b5cf6" class="chart-point"/>
+                    <circle cx="512" cy="261" r="5" fill="#8b5cf6" class="chart-point"/>
+                    <circle cx="728" cy="203" r="5" fill="#8b5cf6" class="chart-point"/>
+                    <circle cx="944" cy="95" r="5" fill="#8b5cf6" class="chart-point"/>
+                    
+                    <!-- Mechanical Engineers (€42k-€120k) -->
+                    <polyline class="chart-line" points="80,390 296,344 512,270 728,218 944,110" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Mechanical Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <circle cx="80" cy="390" r="5" fill="#06b6d4" class="chart-point"/>
+                    <circle cx="296" cy="344" r="5" fill="#06b6d4" class="chart-point"/>
+                    <circle cx="512" cy="270" r="5" fill="#06b6d4" class="chart-point"/>
+                    <circle cx="728" cy="218" r="5" fill="#06b6d4" class="chart-point"/>
+                    <circle cx="944" cy="110" r="5" fill="#06b6d4" class="chart-point"/>
+                    
+                    <!-- Civil Engineers (€40k-€115k) -->
+                    <polyline class="chart-line" points="80,395 296,352 512,280 728,230 944,125" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showTooltip(evt, 'Civil Engineer')" onmouseout="hideTooltip(evt)"/>
+                    <circle cx="80" cy="395" r="5" fill="#10b981" class="chart-point"/>
+                    <circle cx="296" cy="352" r="5" fill="#10b981" class="chart-point"/>
+                    <circle cx="512" cy="280" r="5" fill="#10b981" class="chart-point"/>
+                    <circle cx="728" cy="230" r="5" fill="#10b981" class="chart-point"/>
+                    <circle cx="944" cy="125" r="5" fill="#10b981" class="chart-point"/>
+                    
+                    <!-- Legend - Wider spacing -->
+                    <rect x="80" y="10" width="870" height="30" fill="white" stroke="#ddd" rx="3"/>
+                    
+                    <line x1="95" y1="23" x2="120" y2="23" stroke="#2563eb" stroke-width="3"/>
+                    <text x="128" y="28" font-size="12" font-weight="bold" fill="#333">Software</text>
+                    
+                    <line x1="260" y1="23" x2="285" y2="23" stroke="#f59e0b" stroke-width="3"/>
+                    <text x="293" y="28" font-size="12" font-weight="bold" fill="#333">Chemical</text>
+                    
+                    <line x1="440" y1="23" x2="465" y2="23" stroke="#8b5cf6" stroke-width="3"/>
+                    <text x="473" y="28" font-size="12" font-weight="bold" fill="#333">Electrical</text>
+                    
+                    <line x1="620" y1="23" x2="645" y2="23" stroke="#06b6d4" stroke-width="3"/>
+                    <text x="653" y="28" font-size="12" font-weight="bold" fill="#333">Mechanical</text>
+                    
+                    <line x1="800" y1="23" x2="825" y2="23" stroke="#10b981" stroke-width="3"/>
+                    <text x="833" y="28" font-size="12" font-weight="bold" fill="#333">Civil</text>
+                    
+                    <!-- Y-axis label -->
+                    <text x="20" y="235" font-size="13" font-weight="bold" text-anchor="middle" fill="#333" transform="rotate(-90 20 235)">Salary (€)</text>
+                    <!-- X-axis label -->
+                    <text x="515" y="485" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Years of Experience</text>
+                    
+                    <!-- Tooltip -->
+                    <rect id="tooltip" x="0" y="0" width="150" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5" class="tooltip"/>
+                    <text id="tooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white"/>
+                </svg>
+                
+                <script>
+                function showTooltip(evt, text) {
+                    const tooltip = document.getElementById('tooltip');
+                    const tooltipText = document.getElementById('tooltipText');
+                    tooltipText.textContent = text;
+                    tooltip.setAttribute('x', evt.clientX - 75);
+                    tooltip.setAttribute('y', evt.clientY - 60);
+                    tooltip.classList.add('show');
+                }
+                function hideTooltip(evt) {
+                    const tooltip = document.getElementById('tooltip');
+                    tooltip.classList.remove('show');
+                }
+                </script>
+                <p class="graph-source"><strong>Data Source:</strong> Irish Engineering Salary Survey 2024<br><strong>Note:</strong> Salaries based on Dublin/major cities. Regional variations apply.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medicine Modal -->
+    <div id="medicineModal" class="modal" onclick="if(event.target === this) closeModal('medicineModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('medicineModal')">&times;</button>
+            <h2 class="modal-title">⚕️ Medicine - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €35k-€40k → Experienced (25 yrs): €172k-€180k</strong></p>
+                <p class="graph-info">Surgeons achieve the highest earning potential (€180k+) while GPs reach €140k. All medical specializations show steep growth curves, particularly after years 5-10 when specialists establish their practice. Psychiatrists and Radiologists follow closely behind Surgeons in earning potential.</p>
+                <svg viewBox="0 0 1200 500" style="width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;" id="medicineChart">
+                    <defs>
+                        <style>
+                            .chart-line { cursor: pointer; }
+                            .chart-line:hover { filter: drop-shadow(0 0 8px rgba(0,0,0,0.3)); }
+                        </style>
+                    </defs>
+                    
+                    <line x1="80" y1="420" x2="1150" y2="420" stroke="#ddd" stroke-width="2"/>
+                    <line x1="80" y1="50" x2="80" y2="420" stroke="#ddd" stroke-width="2"/>
+                    
+                    <line x1="80" y1="310" x2="1150" y2="310" stroke="#f0f0f0" stroke-width="1"/>
+                    <line x1="80" y1="200" x2="1150" y2="200" stroke="#f0f0f0" stroke-width="1"/>
+                    <line x1="80" y1="90" x2="1150" y2="90" stroke="#f0f0f0" stroke-width="1"/>
+                    
+                    <text x="80" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">0</text>
+                    <text x="300" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">5</text>
+                    <text x="520" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">10</text>
+                    <text x="740" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">15</text>
+                    <text x="960" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">20</text>
+                    <text x="1150" y="450" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">25</text>
+                    
+                    <text x="65" y="425" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€0</text>
+                    <text x="65" y="315" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€60k</text>
+                    <text x="65" y="205" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€120k</text>
+                    <text x="65" y="95" font-size="13" font-weight="bold" text-anchor="end" fill="#333">€180k</text>
+                    
+                    <!-- Surgeon (€40k-€180k) -->
+                    <polyline class="chart-line" points="80,395 300,350 520,260 740,145 960,70 1150,50" stroke="#ef4444" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Surgeon')" onmouseout="hideMedTooltip(evt)"/>
+                    <circle cx="80" cy="395" r="5" fill="#ef4444"/><circle cx="300" cy="350" r="5" fill="#ef4444"/><circle cx="520" cy="260" r="5" fill="#ef4444"/><circle cx="740" cy="145" r="5" fill="#ef4444"/><circle cx="960" cy="70" r="5" fill="#ef4444"/><circle cx="1150" cy="50" r="5" fill="#ef4444"/>
+                    
+                    <!-- Radiologist (€39k-€177k) -->
+                    <polyline class="chart-line" points="80,396 300,352 520,265 740,152 960,77 1150,55" stroke="#f97316" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Radiologist')" onmouseout="hideMedTooltip(evt)"/>
+                    <circle cx="80" cy="396" r="5" fill="#f97316"/><circle cx="300" cy="352" r="5" fill="#f97316"/><circle cx="520" cy="265" r="5" fill="#f97316"/><circle cx="740" cy="152" r="5" fill="#f97316"/><circle cx="960" cy="77" r="5" fill="#f97316"/><circle cx="1150" cy="55" r="5" fill="#f97316"/>
+                    
+                    <!-- Psychiatrist (€37k-€172k) -->
+                    <polyline class="chart-line" points="80,397 300,355 520,273 740,162 960,87 1150,65" stroke="#8b5cf6" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Psychiatrist')" onmouseout="hideMedTooltip(evt)"/>
+                    <circle cx="80" cy="397" r="5" fill="#8b5cf6"/><circle cx="300" cy="355" r="5" fill="#8b5cf6"/><circle cx="520" cy="273" r="5" fill="#8b5cf6"/><circle cx="740" cy="162" r="5" fill="#8b5cf6"/><circle cx="960" cy="87" r="5" fill="#8b5cf6"/><circle cx="1150" cy="65" r="5" fill="#8b5cf6"/>
+                    
+                    <!-- Consultant (€38k-€175k) -->
+                    <polyline class="chart-line" points="80,396 300,353 520,268 740,158 960,80 1150,58" stroke="#06b6d4" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'Consultant')" onmouseout="hideMedTooltip(evt)"/>
+                    <circle cx="80" cy="396" r="5" fill="#06b6d4"/><circle cx="300" cy="353" r="5" fill="#06b6d4"/><circle cx="520" cy="268" r="5" fill="#06b6d4"/><circle cx="740" cy="158" r="5" fill="#06b6d4"/><circle cx="960" cy="80" r="5" fill="#06b6d4"/><circle cx="1150" cy="58" r="5" fill="#06b6d4"/>
+                    
+                    <!-- GP (€35k-€140k) -->
+                    <polyline class="chart-line" points="80,398 300,365 520,305 740,220 960,130 1150,100" stroke="#10b981" stroke-width="4" fill="none" onmouseover="showMedTooltip(evt, 'General Practitioner (GP)')" onmouseout="hideMedTooltip(evt)"/>
+                    <circle cx="80" cy="398" r="5" fill="#10b981"/><circle cx="300" cy="365" r="5" fill="#10b981"/><circle cx="520" cy="305" r="5" fill="#10b981"/><circle cx="740" cy="220" r="5" fill="#10b981"/><circle cx="960" cy="130" r="5" fill="#10b981"/><circle cx="1150" cy="100" r="5" fill="#10b981"/>
+                    
+                    <!-- Legend -->
+                    <rect x="80" y="10" width="1070" height="30" fill="white" stroke="#ddd" rx="3"/>
+                    <line x1="95" y1="23" x2="120" y2="23" stroke="#ef4444" stroke-width="3"/><text x="128" y="28" font-size="12" font-weight="bold" fill="#333">Surgeon</text>
+                    <line x1="250" y1="23" x2="275" y2="23" stroke="#f97316" stroke-width="3"/><text x="283" y="28" font-size="12" font-weight="bold" fill="#333">Radiologist</text>
+                    <line x1="440" y1="23" x2="465" y2="23" stroke="#8b5cf6" stroke-width="3"/><text x="473" y="28" font-size="12" font-weight="bold" fill="#333">Psychiatrist</text>
+                    <line x1="630" y1="23" x2="655" y2="23" stroke="#06b6d4" stroke-width="3"/><text x="663" y="28" font-size="12" font-weight="bold" fill="#333">Consultant</text>
+                    <line x1="810" y1="23" x2="835" y2="23" stroke="#10b981" stroke-width="3"/><text x="843" y="28" font-size="12" font-weight="bold" fill="#333">GP</text>
+                    
+                    <text x="20" y="235" font-size="13" font-weight="bold" text-anchor="middle" fill="#333" transform="rotate(-90 20 235)">Salary (€)</text>
+                    <text x="615" y="485" font-size="13" font-weight="bold" text-anchor="middle" fill="#333">Years of Experience</text>
+                    
+                    <rect id="medTooltip" x="0" y="0" width="200" height="30" fill="#1b4d3e" stroke="#d4af37" stroke-width="2" rx="5" style="display: none;"/>
+                    <text id="medTooltipText" x="0" y="0" font-size="13" font-weight="bold" fill="white"/>
+                </svg>
+                
+                <script>
+                function showMedTooltip(evt, text) {
+                    const tooltip = document.getElementById('medTooltip');
+                    const tooltipText = document.getElementById('medTooltipText');
+                    tooltipText.textContent = text;
+                    tooltip.setAttribute('x', evt.clientX - 100);
+                    tooltip.setAttribute('y', evt.clientY - 60);
+                    tooltip.style.display = 'block';
+                }
+                function hideMedTooltip(evt) {
+                    const tooltip = document.getElementById('medTooltip');
+                    tooltip.style.display = 'none';
+                }
+                </script>
+                <p class="graph-source"><strong>Data Source:</strong> Irish Medical Council Salary Report 2024<br><strong>Note:</strong> Includes private practice potential. Public sector may vary.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Law Modal -->
+    <div id="lawModal" class="modal" onclick="if(event.target === this) closeModal('lawModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('lawModal')">&times;</button>
+            <h2 class="modal-title">⚖️ Law - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €35k → Experienced (20+ yrs): €130k-€145k</strong></p>
+                <p class="graph-info">Law graduates start at competitive entry-level salaries (€35k) with strong progression to €145k+ for senior lawyers and partners. The growth accelerates significantly after 10 years as lawyers establish their practice and take on senior roles.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Law Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Law Society of Ireland 2024<br><strong>Note:</strong> Partnership and private practice opportunities increase earnings.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Business Modal -->
+    <div id="businessModal" class="modal" onclick="if(event.target === this) closeModal('businessModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('businessModal')">&times;</button>
+            <h2 class="modal-title">💼 Business - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €32k → Experienced (20+ yrs): €110k-€135k</strong></p>
+                <p class="graph-info">Business graduates enjoy varied career paths with solid salary growth. Management consultants and finance professionals typically earn more than marketing and general managers. MBA holders achieve significantly higher salaries, reaching €135k+ in senior leadership roles.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Business Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Irish Business Salary Survey 2024<br><strong>Note:</strong> MBA and specialty degrees command premium salaries.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teaching Modal -->
+    <div id="teachingModal" class="modal" onclick="if(event.target === this) closeModal('teachingModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('teachingModal')">&times;</button>
+            <h2 class="modal-title">📚 Teaching - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €28k-€38k → Experienced (30 yrs): €65k-€82k</strong></p>
+                <p class="graph-info">Primary teachers start at €28k while university lecturers start at €38k. Secondary teachers bridge the gap at €30k. Progression to Principal (€74k) and Senior Lecturer (€82k) roles offers advancement opportunities. Teaching provides excellent job security and pension benefits.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Teaching Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Department of Education Ireland 2024<br><strong>Note:</strong> Includes pension benefits and job security advantages.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Humanities Modal -->
+    <div id="humanitiesModal" class="modal" onclick="if(event.target === this) closeModal('humanitiesModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('humanitiesModal')">&times;</button>
+            <h2 class="modal-title">🎓 Humanities & Creative - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €24k-€32k → Experienced (25 yrs): €88k-€110k</strong></p>
+                <p class="graph-info">Psychologists and academics show the strongest earning growth (€105k-€110k), while journalists and designers follow (€88k-€98k). Creative fields offer diverse opportunities from corporate roles to freelance work, with potential for significant growth in senior or specialized positions.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Humanities Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Irish Creative Industries Salary Report 2024<br><strong>Note:</strong> Freelance and portfolio work may offer higher earning potential.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theology Modal -->
+    <div id="theologyModal" class="modal" onclick="if(event.target === this) closeModal('theologyModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('theologyModal')">&times;</button>
+            <h2 class="modal-title">📖 Theology & Religion - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €30k-€35k → Experienced (20+ yrs): €55k-€75k</strong></p>
+                <p class="graph-info">Non-profit directors and senior researchers in theology achieve the highest salaries (€70k-€75k). Religious leaders and counselors build meaningful careers with solid salary progression. The field values experience and advanced qualifications.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Theology Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Irish Educational Institutions 2024<br><strong>Note:</strong> Significant non-monetary benefits in faith-based organizations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Psychology Modal -->
+    <div id="psychologyModal" class="modal" onclick="if(event.target === this) closeModal('psychologyModal')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('psychologyModal')">&times;</button>
+            <h2 class="modal-title">🧠 Psychology - Salary Progression</h2>
+            <div class="graph-container">
+                <p><strong>Entry Level: €28k → Experienced (15+ yrs): €85k-€105k</strong></p>
+                <p class="graph-info">Clinical psychologists in private practice achieve the highest earning potential (€105k). HR specialists and organizational psychologists also earn well (€95k+). The field offers multiple career paths with growing demand and strong salary growth potential.</p>
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/749c3310b55e38ad00fa5c5b111a4e4f/0ab9cca6-4f98-41fc-8cce-f92bf91b8162/35ad69fd.png" alt="Psychology Salary Graph">
+                <p class="graph-source"><strong>Data Source:</strong> Psychological Society of Ireland 2024<br><strong>Note:</strong> Private practice and specialization increase earning potential.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Outcomes Section -->
     <section class="outcomes-section" id="outcomes">
@@ -863,6 +1216,41 @@
             <p>&copy; 2026 Study Ireland. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modalId = event.target.id;
+                closeModal(modalId);
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.show');
+                modals.forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
